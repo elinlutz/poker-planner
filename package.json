@@ -1,0 +1,14 @@
+{
+  "name": "poker-planner",
+  "version": "1.0.0",
+  "description": "A collaborative planning app for complexity estimates",
+  "main": "index.js",
+  "author": "Elin Lütz",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^2.10.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "graphql": "^14.6.0"
+  }
+}
