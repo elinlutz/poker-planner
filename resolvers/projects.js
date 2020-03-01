@@ -20,6 +20,15 @@ export default {
       return newProject;
     },
 
+    updateProject: (parent, { id, name }, { models }) => {
+      const updatedProject = {
+        id,
+        name
+      };
+      models.projects[id] = updatedProject;
+      return updatedProject;
+    },
+
     deleteProject: (parent, { id }, { models }) => {
       const { [id]: project, ...otherProjects } = models.projects;
       if (!project) {
