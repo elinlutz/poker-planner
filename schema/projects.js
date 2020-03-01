@@ -2,14 +2,14 @@ import { gql } from "apollo-server-express";
 
 export default gql`
   extend type Query {
-    projects: [Projects!]
+    projects: [Project!]
     project(id: ID!): Project!
   }
 
   extend type Mutation {
-    createNewProject(text: String!): Project!
+    createNewProject(name: String!): Project!
     deleteProject(id: ID!): Boolean!
-    updateProject(id: ID!, text: String!): Project!
+    updateProject(id: ID!, name: String!): Project!
   }
 
   type Project {

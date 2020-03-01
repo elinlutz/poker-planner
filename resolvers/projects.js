@@ -20,7 +20,7 @@ export default {
       return newProject;
     },
 
-    deleteNote: (parent, { id }, { models }) => {
+    deleteProject: (parent, { id }, { models }) => {
       const { [id]: project, ...otherProjects } = models.projects;
       if (!project) {
         return false;
