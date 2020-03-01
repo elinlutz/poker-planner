@@ -3,39 +3,40 @@ import { v4 as uuidv4 } from "uuid";
 export default {
   Query: {
     projects: async (parent, args, { models }) => {
-      return await models.Note.findAll();
+      return await models.Project.findAll();
     },
-    project: (parent, { id }, { models }) => {
-      return models.projects[id];
+    project: async (parent, { id }, { models }) => {
+      return await models.Project.findByPk(id);
     }
   },
   Mutation: {
-    createNewProject: (parent, { name }, { models }) => {
-      const id = uuidv4();
-      const newProject = {
-        id,
-        name
-      };
-      models.projects[id] = newProject;
+    createNewProject: async (parent, { name }, { models }) => {
+      const newProject = await models.Project.create({ name });
       return newProject;
     },
 
-    updateProject: (parent, { id, name }, { models }) => {
-      const updatedProject = {
-        id,
-        name
-      };
-      models.projects[id] = updatedProject;
+    updateProject: async (parent, { id, name }, { models }) => {
+      await models.Project.update(
+        {
+          name
+        },
+        {
+          where: {
+            id: id
+          }
+        }
+      );
+      const updatedProject = await models.Project.findByPk(id, {});
       return updatedProject;
     },
 
-    deleteProject: (parent, { id }, { models }) => {
-      const { [id]: project, ...otherProjects } = models.projects;
-      if (!project) {
-        return false;
-      }
-      models.projects = otherProjects;
-      return true;
+    deleteProject: async (parent, { id }, { models }) => {
+      const deletedProject = await models.Project.destroy({
+        where: {
+          id
+        }
+      });
+      return deletedProject;
     }
   }
 };
