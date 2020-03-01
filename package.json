@@ -6,11 +6,13 @@
   "author": "Elin Lütz",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --exec babel-node index.js"
+    "start": "nodemon --exec babel-node -r dotenv/config index.js",
+    "db_start": "nodemon --exec babel-node -r dotenv/config index.js"
   },
   "dependencies": {
     "apollo-server": "^2.10.1",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "graphql": "^14.6.0",
     "pg": "^7.18.2",

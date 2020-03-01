@@ -7,6 +7,7 @@ import schema from "./schema";
 import resolvers from "./resolvers";
 
 const app = express();
+const port = process.env.PORT || 8000;
 
 app.use(cors());
 
@@ -23,11 +24,13 @@ server.applyMiddleware({
   path: "/graphql"
 });
 
-app.listen(
-  {
-    port: 8000
-  },
-  () => {
-    console.log("Running Apollo Server on http://localhost:8000/graphql");
-  }
+sequelize.sync().then(async () =>
+  app.listen(
+    {
+      port
+    },
+    () => {
+      console.log(`Running Apollo Server on http://localhost:${port}/graphql`);
+    }
+  )
 );

@@ -2,8 +2,8 @@ import { v4 as uuidv4 } from "uuid";
 
 export default {
   Query: {
-    projects: (parent, args, { models }) => {
-      return Object.values(models.projects);
+    projects: async (parent, args, { models }) => {
+      return await models.Note.findAll();
     },
     project: (parent, { id }, { models }) => {
       return models.projects[id];
