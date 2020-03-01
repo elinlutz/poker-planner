@@ -10,7 +10,8 @@ const sequelize = new Sequelize(
 );
 
 const models = {
-  Project: sequelize.import("./projects")
+  Project: sequelize.import("./projects"),
+  Vote: sequelize.import("./votes")
 };
 
 async function testConnection() {
@@ -23,6 +24,13 @@ async function testConnection() {
 }
 
 testConnection();
+// seed();
+
+// async function seed() {
+//   models.Vote.create({
+//     firstName: "Elin"
+//   });
+// }
 
 Object.keys(models).forEach(key => {
   if ("associate" in models[key]) {

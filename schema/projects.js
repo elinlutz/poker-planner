@@ -15,5 +15,13 @@ export default gql`
   type Project {
     id: ID!
     name: String!
+    votes: [Vote]!
+  }
+
+  type Vote {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    score: Boolean!
   }
 `;

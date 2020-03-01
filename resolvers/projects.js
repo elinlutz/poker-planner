@@ -10,7 +10,8 @@ export default {
     }
   },
   Mutation: {
-    createNewProject: async (parent, { name }, { models }) => {
+    createNewProject: async (parent, { id, name }, { models }) => {
+      //id = uuidv4();
       const newProject = await models.Project.create({ name });
       return newProject;
     },
