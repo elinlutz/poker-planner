@@ -24,13 +24,19 @@ async function testConnection() {
 }
 
 testConnection();
-// seed();
+seed();
 
-// async function seed() {
-//   models.Vote.create({
-//     firstName: "Elin"
-//   });
-// }
+async function seed() {
+  models.Project.create({
+    name: "SuperApp"
+  });
+  models.Vote.create({
+    firstName: "Elin",
+    lastName: "Lu",
+    score: 8,
+    projectId: 2
+  });
+}
 
 Object.keys(models).forEach(key => {
   if ("associate" in models[key]) {
