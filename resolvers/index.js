@@ -1,3 +1,4 @@
 import projectResolvers from "./projects";
+import voteResolvers from "./votes";
 
-export default [projectResolvers];
+export default [projectResolvers, voteResolvers];
