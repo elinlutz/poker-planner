@@ -1,29 +1,31 @@
 import React from "react";
-import "./App.css";
 import { gql } from "apollo-boost";
-import { useQuery } from "@apollo/react-hooks";
 
-const GET_VOTES = gql`
+import { useParams } from "react-router-dom";
+import CreateVoteDiv from "../components/CreateVoteDiv";
+
+const GET_ONE_PROJECT = gql`
   query {
-    votes(projectId: 1) {
+    project(id: id) {
       id
+      name
+      votes {
+        id
+        firstName
+        lastName
+      }
     }
   }
 `;
 
-function Votes() {
-  const { loading, error, data } = useQuery(GET_VOTES);
+const Project = () => {
+  let { projectId } = useParams();
+  return (
+    <>
+      <h3>Requested project ID: {projectId}</h3>
+      <CreateVoteDiv />
+    </>
+  );
+};
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
-  return data.projects.map(({ id, firstName }) => (
-    <div key={id}>
-      <p>
-        {id}: {firstName}
-      </p>
-    </div>
-  ));
-}
-
-export default Votes;
+export default Project;
