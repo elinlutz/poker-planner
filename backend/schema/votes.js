@@ -2,7 +2,7 @@ import { gql } from "apollo-server-express";
 
 export default gql`
   extend type Query {
-    votes(projectId: ID!): [Vote!]
+    votes: [Vote!]
     vote(id: ID!): Vote!
   }
 
@@ -28,5 +28,6 @@ export default gql`
     firstName: String!
     lastName: String!
     score: Int!
+    projectId: Int!
   }
 `;

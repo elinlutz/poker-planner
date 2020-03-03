@@ -15,6 +15,6 @@ export default gql`
   type Project {
     id: ID!
     name: String!
-    votes: [Vote]!
+    votes: [Vote]
   }
 `;
